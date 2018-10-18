@@ -1,9 +1,11 @@
 #include <memory>
+#include <vector>
 
 #ifndef _BTREE_
 #define _BTREE_
 
 using std::shared_ptr;
+using std::vector;
 
 template<class T> 
 struct BTNode
@@ -36,7 +38,8 @@ public:
   }
 
   bool IsBalancedHeight(const shared_ptr<BTNode<T>>&) const;
-  
+  bool IsSymmetric() const;
+  void Collect(const shared_ptr<BTNode<T>>&, vector<T>&, TraversalType) const;
 private:
   shared_ptr<BTNode<T>> m_root;
 };
